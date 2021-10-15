@@ -1,5 +1,5 @@
 lista = []
-numeros = input(f"Digite os numeros: ") # 5 6 1 4 9 0 3 8 7 2
+numeros = input("Digite os numeros: ") # 5 6 1 4 9 0 3 8 7 2
 numeros = numeros.split()
 for i in range(10):
     lista.append(int(numeros[i]))
