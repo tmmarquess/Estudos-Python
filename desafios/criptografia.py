@@ -46,7 +46,8 @@ def Criptografar(chave,frase):
 
 def Descriptografar(chave, fraseCrip):
     matriz = declaraMatriz()
-    chave = [chave[1][1],chave[0][1]*(-1)],[chave[1][0]*(-1),chave[0][0]]
+    det = 1/((chave[0][0] * chave[1][1]) - (chave[0][1] * chave[1][0]))
+    chave = [det * chave[1][1], det * chave[0][1]*(-1)],[det * chave[1][0]*(-1), det * chave[0][0]]
 
     linha1 = []
     linha2 = []
@@ -74,12 +75,12 @@ if escolha == 1:
     frase = input("Digite uma frase: ")
 
     chave = []
-    linha = input("Digite a Linha 1 da matriz chave:").split()
+    linha = input("Digite a Linha 1 da matriz chave: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     chave.append(linha)
 
-    linha = input("Digite a Linha 2 da matriz chave:").split()
+    linha = input("Digite a Linha 2 da matriz chave: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     chave.append(linha)
@@ -91,23 +92,23 @@ if escolha == 1:
         print()
 else:
     fraseCrip = []
-    linha = input("Digite a Linha 1 da matriz criptografada:").split()
+    linha = input("Digite a Linha 1 da matriz criptografada: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     fraseCrip.append(linha)
 
-    linha = input("Digite a Linha 2 da matriz criptografada:").split()
+    linha = input("Digite a Linha 2 da matriz criptografada: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     fraseCrip.append(linha)
 
     chave = []
-    linha = input("Digite a Linha 1 da matriz chave:").split()
+    linha = input("Digite a Linha 1 da matriz chave: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     chave.append(linha)
 
-    linha = input("Digite a Linha 2 da matriz chave:").split()
+    linha = input("Digite a Linha 2 da matriz chave: ").split()
     for i in range(len(linha)):
         linha[i] = int(linha[i])
     chave.append(linha)
