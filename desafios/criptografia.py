@@ -65,6 +65,14 @@ def Descriptografar(chave, fraseCrip):
 
     return fraseTexto
 
+def temInversa(matriz):
+    det = ((matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]))
+
+    if det != 0:
+        return True
+    else:
+        return False
+
 while(True):
     escolha = int(input("O que você deseja fazer? [1 = criptografar / 2 = descriptografar]: "))
 
@@ -74,16 +82,22 @@ while(True):
 if escolha == 1:
     frase = input("Digite uma frase: ")
 
-    chave = []
-    linha = input("Digite a Linha 1 da matriz chave: ").split()
-    for i in range(len(linha)):
-        linha[i] = int(linha[i])
-    chave.append(linha)
+    while(True):
+        chave = []
+        linha = input("Digite a Linha 1 da matriz chave: ").split()
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        chave.append(linha)
 
-    linha = input("Digite a Linha 2 da matriz chave: ").split()
-    for i in range(len(linha)):
-        linha[i] = int(linha[i])
-    chave.append(linha)
+        linha = input("Digite a Linha 2 da matriz chave: ").split()
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        chave.append(linha)
+
+        if not temInversa(chave):
+            print("Escolha outra chave [cujo determinante seja diferente de 0]")
+        else:
+            break
 
     fraseCrip = Criptografar(chave,frase)
     for i in range(2):
@@ -102,16 +116,22 @@ else:
         linha[i] = int(linha[i])
     fraseCrip.append(linha)
 
-    chave = []
-    linha = input("Digite a Linha 1 da matriz chave: ").split()
-    for i in range(len(linha)):
-        linha[i] = int(linha[i])
-    chave.append(linha)
+    while(True):
+        chave = []
+        linha = input("Digite a Linha 1 da matriz chave: ").split()
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        chave.append(linha)
 
-    linha = input("Digite a Linha 2 da matriz chave: ").split()
-    for i in range(len(linha)):
-        linha[i] = int(linha[i])
-    chave.append(linha)
+        linha = input("Digite a Linha 2 da matriz chave: ").split()
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        chave.append(linha)
+
+        if not temInversa(chave):
+            print("Esta chave não pode ser utilizada [determinante = 0]")
+        else:
+            break
 
     fraseDescrip =  Descriptografar(chave,fraseCrip)
 
