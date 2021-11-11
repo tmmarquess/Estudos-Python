@@ -1,16 +1,20 @@
-# 9,16,6,8,10,12,13,18,16;24,44,16,24,28,32,36,50,44
-coisado = input().split(";")
-coisado[0] = coisado[0].split(",")
-coisado[1] = coisado[1].split(",")
+def shellSort(vet, size):
+    gap = 1
+    while(gap < size):
+        gap = (3*gap+1)
+    while ( gap > 1) :
+        gap = int(gap/3)
+        for i in range(gap,size):
+            value = vet[1][i]
+            j = i - gap
+            while (j >= 0 and value < vet[1][j]):
+                vet [1][j + gap] = vet[1][j]
+                aux = vet[0][j + gap]
+                vet[0][j + gap] = vet[0][j]
+                j -= gap
+            vet [1][j + gap] = value
+            vet[0][j + gap] = aux
 
-for i in range(len(coisado[0])):
-    coisado[0][i] =  int(coisado[0][i])
-    coisado[1][i] =  int(coisado[1][i])
-
-for i in coisado[0]:
-    print(i, end=" ")
-
-print()
-
-for i in coisado[1]:
-    print(i, end=" ")
+vet = [[1,2,3,4,5,6],[10,5,7,8,9,10]]
+shellSort(vet,len(vet[1]))
+print(vet)
